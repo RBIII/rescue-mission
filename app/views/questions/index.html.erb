@@ -1,0 +1,19 @@
+<div class="title_header">
+  _recent question(s)
+</div>
+
+<fieldset>
+  <div class="questions">
+    <% @questions.order(created_at: :desc).each do |question| %>
+    <div class="questions panel">
+      <%= '> '%><%= link_to question.title, question_path(question) %>
+      <p class="username"><%= question.user.username %><%= ' | ' %><%= question.created_at %></p>
+    </div>
+    <% end %>
+  </div>
+</fieldset>
+
+<dl class="sub-nav">
+  <dd class="active"><%= link_to '_new question', new_question_path %></dd>
+</dl>
+
